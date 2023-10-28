@@ -1,0 +1,91 @@
+<p>安装PyAutoGUI</p>
+<pre><code>pip install pyautogui
+</code></pre><p>鼠标控制功能</p>
+<pre><code># 获取屏幕大小
+import pyautogui
+size = pyautogui.size()
+print(size)
+
+# 获取鼠标当前坐标
+import pyautogui
+mouse_pos = pyautogui.position()
+print(mouse_pos)
+
+# 实时获取鼠标当前位置
+import pyautogui
+last_pos = pyautogui.position()
+try:
+    while True:
+        new_pos = pyautogui.position()
+        if last_pos != new_pos:
+            print(new_pos)
+            last_pos = new_pos
+except KeyboardInterrupt:
+    print(&#39;\nExit&#39;)
+
+# 鼠标移动到x，y坐标位置，移动时间为1秒
+import pyautogui
+pyautogui.moveTo(x, y, duration=1)
+
+# 鼠标相对移动
+import pyautogui
+pyautogui.move(0, y)  # 鼠标向下移动y个像素
+pyautogui.move(-x, 0)  # 鼠标向左移动x个像素
+pyautogui.move(-x, None)  # 鼠标向左移动x个像素
+
+# 鼠标拖动
+import pyautogui
+pyautogui.dragTo(100, 200, button=&#39;left&#39;)  # 按住鼠标左键将鼠标拖动到100、200
+pyautogui.dragTo(300, 400, 2, button=&#39;left&#39;)  # 按住鼠标左键，在2秒内将鼠标拖动到X轴300、Y轴400
+pyautogui.drag(30, 0, 2, button=&#39;right&#39;)  # 按住鼠标右键，在2秒内向左拖动鼠标30像素
+
+# 鼠标点击
+import pyautogui
+pyautogui.click()  # 点击鼠标
+pyautogui.click(x=100, y=200)  # 移动到100、200，然后单击鼠标左键
+pyautogui.click(button=&#39;right&#39;)  # 单击鼠标右键
+pyautogui.click(clicks=2)  # 双击鼠标左键
+pyautogui.click(clicks=2, interval=0.25)  # 双击鼠标左键，但两次单击之间暂停0.25秒
+pyautogui.click(button=&#39;right&#39;, clicks=3, interval=0.25)  # 三击鼠标右键，两次单击之间暂停0.25秒
+pyautogui.doubleClick()  # 执行左键双击
+
+# mouseDown() 和 mouseUp() 函数
+import pyautogui
+pyautogui.mouseDown()  # 按下鼠标左键
+pyautogui.mouseUp()  # 松开鼠标左键
+pyautogui.mouseDown(button=&#39;right&#39;)  # 按下右键
+pyautogui.mouseUp(button=&#39;right&#39;, x=100, y=200)  # 将鼠标移动到100、200，然后向上松开右键
+</code></pre><p>键盘控制功能</p>
+<pre><code># write() 函数   只能按单字符键
+import pyautogui
+pyautogui.write(&#39;Hello world!&#39;)  # 按出Hello world!
+
+# press()、keyDown() 和 keyUp() 函数
+import pyautogui
+pyautogui.press(&#39;enter&#39;)  # 按回车键
+pyautogui.press(&#39;f1&#39;)     # 按F1键
+pyautogui.press(&#39;left&#39;)   # 按向左箭头键
+pyautogui.keyDown(&#39;shift&#39;)  # 按住shift键
+pyautogui.keyUp(&#39;shift&#39;)  # 松开Shift键
+pyautogui.press([&#39;left&#39;, &#39;left&#39;, &#39;left&#39;])  # 按向左箭头键3次
+pyautogui.press(&#39;left&#39;, presses=3)  # 按向左箭头键3次
+
+# hold() 上下文管理器
+import pyautogui
+with pyautogui.hold(&#39;shift&#39;):  # 按下shift键，执行完代码后松开
+    pyautogui.press([&#39;left&#39;, &#39;left&#39;, &#39;left&#39;])  # 按向左箭头键3次
+
+# hotkey() 函数
+import pyautogui
+pyautogui.hotkey(&#39;ctrl&#39;, &#39;shift&#39;, &#39;esc&#39;)  # 同时按下ctrl，shift，esc键，并松开
+</code></pre><p>截图功能</p>
+<pre><code># screenshot() 函数
+import pyautogui
+pyautogui.screenshot()
+pyautogui.screenshot(&#39;my_screenshot.png&#39;)
+</code></pre><p>定位功能</p>
+<pre><code># locateCenterOnScreen()函数
+import pyautogui
+x, y = pyautogui.locateCenterOnScreen(&#39;chat.png&#39;, minSearchTime=0.5)  # 定位图片的坐标，minSearchTime---搜索时间
+pyautogui.click(x, y)  # 点击图片的坐标
+</code></pre>
